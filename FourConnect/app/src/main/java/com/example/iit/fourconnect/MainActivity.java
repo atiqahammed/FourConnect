@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
+
+
     }
 
     @Override
@@ -129,11 +132,60 @@ public class MainActivity extends AppCompatActivity {
         anim.setFillAfter(true);
         cell.startAnimation(anim);
         board.occupyCell(col, row);
+        board.toggleTurn();
+
         if (board.checkForWin(col, row)) {
             win();
-        } else {
-            changeTurn();
-        }
+        } else if(board.turn == Board.Turn.SECOND) {
+           // changeTurn();
+            //board.toggleTurn();
+              viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+
+              drop(1);
+
+//            if(board.turn == Board.Turn.SECOND) {
+//                try {
+//
+//                    drop(1);
+//                    //Log.v("msg", "WAIT CheckFrequencyRun");
+//                    Thread.sleep(1000); // giving time to connect to wifi
+//
+//                } catch (InterruptedException e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
+
+
+                viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+                board.toggleTurn();
+
+            }
+//
+//            board.toggleTurn();
+//            viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+//            try {
+//
+//
+//                //Log.v("msg", "WAIT CheckFrequencyRun");
+//                Thread.sleep(1000); // giving time to connect to wifi
+//                drop(1);
+//
+//            } catch (InterruptedException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//            board.toggleTurn();
+//            viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+
+
+
+
+    }
+
+
+    private void changeTurn() {
+        board.toggleTurn();
+        viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
     }
 
     private void win() {
@@ -142,14 +194,7 @@ public class MainActivity extends AppCompatActivity {
         viewHolder.winnerText.setVisibility(View.VISIBLE);
     }
 
-    private void changeTurn() {
-        board.toggleTurn();
-        if(board.turn == Board.Turn.FIRST) {
-            Toast.makeText(this, "this is first turn", Toast.LENGTH_LONG).show();
-        }
 
-        viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
-    }
 
     private int colAtX(float x) {
         float colWidth = cells[0][0].getWidth();

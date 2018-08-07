@@ -74,21 +74,14 @@ public class Board {
       }
       stringBoard.add(tempStringList);
     }
-
-    //System.out.println("sdkjfkljsdflkajsdfhkalsdhfklasjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdlksh");
-
-    //Toast.makeText( this, "ok")
-    printStringBoard();
+    //printStringBoard();
   }
 
   private void printStringBoard() {
-
     for(int i = 0; i < stringBoard.size(); i++) {
       for (int j = 0; j < stringBoard.get(0).size(); j++) {
         System.out.print(stringBoard.get(i).get(j) + " ");
-
       }
-
       System.out.println();
     }
 
