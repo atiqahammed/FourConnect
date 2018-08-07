@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewHolder viewHolder;
     private static int NUM_ROWS = 6;
     private static int NUM_COLS = 7;
+    int count = 0;
 
 
 
@@ -60,10 +61,23 @@ public class MainActivity extends AppCompatActivity {
                         int col = colAtX(motionEvent.getX());
                         if (col != -1) {
                             drop(col);
+
+
+                            Random random = new Random();
+                            int k = random.nextInt(7);
+
+                            for(int i = 0; i < 100000; i++)
+                                k = (k+i) % 7;
+
+                            drop1(k);
+
                             //Log.e("col num", "col = " + col);
                         }
                     }
                 }
+
+
+
                 return true;
             }
         });
@@ -132,53 +146,39 @@ public class MainActivity extends AppCompatActivity {
         anim.setFillAfter(true);
         cell.startAnimation(anim);
         board.occupyCell(col, row);
-        board.toggleTurn();
 
         if (board.checkForWin(col, row)) {
             win();
-        } else if(board.turn == Board.Turn.SECOND) {
-           // changeTurn();
-            //board.toggleTurn();
-              viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+            return;
+        } else {
+            changeTurn();
+        }
+    }
 
-              drop(1);
-
-//            if(board.turn == Board.Turn.SECOND) {
-//                try {
-//
-//                    drop(1);
-//                    //Log.v("msg", "WAIT CheckFrequencyRun");
-//                    Thread.sleep(1000); // giving time to connect to wifi
-//
-//                } catch (InterruptedException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
+    private void drop1(int col) {
 
 
-                viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
-                board.toggleTurn();
+        if (board.hasWinner)
+            return;
+        int row = board.lastAvailableRow(col);
+        if (row == -1)
+            return;
+        final ImageView cell = cells[row][col];
+        float move = -(cell.getHeight() * row + cell.getHeight() + 15);
+        cell.setY(move);
+        cell.setImageResource(resourceForTurn());
+        TranslateAnimation anim = new TranslateAnimation(0, 0, 0, Math.abs(move));
+        anim.setDuration(1200);
+        anim.setFillAfter(true);
+        cell.startAnimation(anim);
+        board.occupyCell(col, row);
 
-            }
-//
-//            board.toggleTurn();
-//            viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
-//            try {
-//
-//
-//                //Log.v("msg", "WAIT CheckFrequencyRun");
-//                Thread.sleep(1000); // giving time to connect to wifi
-//                drop(1);
-//
-//            } catch (InterruptedException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            board.toggleTurn();
-//            viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
-
-
-
+        if (board.checkForWin(col, row)) {
+            win();
+            return;
+        } else {
+            changeTurn();
+        }
 
     }
 
