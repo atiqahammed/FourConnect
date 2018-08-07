@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewHolder viewHolder;
     private static int NUM_ROWS = 6;
     private static int NUM_COLS = 7;
+
+
 
 
     private class ViewHolder {

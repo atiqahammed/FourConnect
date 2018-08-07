@@ -1,6 +1,9 @@
 package com.example.iit.fourconnect;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Sushanth Manakhari on 05/10/2015.
@@ -11,6 +14,7 @@ public class Board {
   private int numRows;
   public boolean hasWinner;
   public Cell[][] cells;
+  ArrayList<ArrayList<String>> stringBoard;
 
   public enum Turn {
     FIRST, SECOND
@@ -22,7 +26,18 @@ public class Board {
     numCols = cols;
     numRows = rows;
     cells = new Cell[cols][rows];
+    initiateStringArrayLisy();
     reset();
+  }
+
+  private void initiateStringArrayLisy() {
+    stringBoard = new ArrayList<>();
+    for(int i = 0; i < numRows; i++) {
+      ArrayList<String> tempStringList = new ArrayList<>();
+      for(int j = 0; j < numCols; j++)
+        tempStringList.add(".");
+      stringBoard.add(tempStringList);
+    }
   }
 
   public void reset() {
@@ -47,20 +62,35 @@ public class Board {
   public void occupyCell(int col, int row) {
     cells[col][row].setPlayer(turn);
 
-    for(int i = 0; i < 6; i++) {
-      for(int j = 0; j < 7; j++) {
+    stringBoard = new ArrayList<>();
+    for(int i = 0; i < numRows; i++) {
+      ArrayList<String> tempStringList = new ArrayList<>();
+      for(int j = 0; j < numCols; j++) {
         if(cells[j][i].player ==  Turn.FIRST)
-          System.out.print("X ");
+          tempStringList.add("X");
         else if(cells[j][i].player ==  Turn.SECOND)
-          System.out.print("O ");
-        else
-          System.out.print("- ");
-        //Log.e("",)
+          tempStringList.add("O");
+        else tempStringList.add(".");
+      }
+      stringBoard.add(tempStringList);
+    }
+
+    //System.out.println("sdkjfkljsdflkajsdfhkalsdhfklasjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdjdlksh");
+
+    //Toast.makeText( this, "ok")
+    printStringBoard();
+  }
+
+  private void printStringBoard() {
+
+    for(int i = 0; i < stringBoard.size(); i++) {
+      for (int j = 0; j < stringBoard.get(0).size(); j++) {
+        System.out.print(stringBoard.get(i).get(j) + " ");
+
       }
 
       System.out.println();
     }
-
 
   }
 
