@@ -19,6 +19,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_POINTER_UP:
                     case MotionEvent.ACTION_UP: {
                         int col = colAtX(motionEvent.getX());
-                        if (col != -1)
+                        if (col != -1) {
                             drop(col);
+                            //Log.e("col num", "col = " + col);
+                        }
                     }
                 }
                 return true;
@@ -137,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeTurn() {
         board.toggleTurn();
+        if(board.turn == Board.Turn.FIRST) {
+            Toast.makeText(this, "this is first turn", Toast.LENGTH_LONG).show();
+        }
+
         viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
     }
 
