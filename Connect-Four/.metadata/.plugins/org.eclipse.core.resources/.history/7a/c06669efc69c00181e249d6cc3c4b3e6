@@ -1,0 +1,33 @@
+package ConnectFourGamePackage;
+
+public class Defence {
+
+	private GameBoardClass gameBoard;
+	
+	public Defence(GameBoardClass gameBoard) {
+		this.gameBoard = gameBoard; 
+	}
+	
+	
+	public boolean shouldDefence() {
+		
+		
+		
+		
+		
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

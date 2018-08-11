@@ -1,0 +1,110 @@
+package ConnectFourGamePackage;
+
+import javax.print.attribute.standard.RequestingUserName;
+
+public class Defence {
+
+	private GameBoardClass gameBoard;
+	//private final static int fx[]={  0,  0,  1, -1, -1,  1, -1,  1};
+	//private final static int fy[]={ -1,  1,  0,  0,  1,  1, -1, -1};
+	
+	
+	private final static int fx[]={-1,  0,  1, -1,  1, -1,  0,  1};
+	private final static int fy[]={-1, -1, -1,  0,  0,  1,  1,  1};
+	
+	
+	
+	public Defence(GameBoardClass gameBoard) {
+		this.gameBoard = gameBoard; 
+	}
+	
+	
+	public boolean shouldDefence(int col) {
+		
+		
+		int row = gameBoard.getEmptyIndexOfAColumn(col);
+		
+		//System.out.println(row);
+		
+		System.out.println("--------------");		
+		System.out.println(col);
+		System.out.println("--------------");
+				
+		
+		for(int i = 0; i < 8; i++) {
+			//int numberOfOpponent = 0;
+			int tempRow = row;
+			int tempCol = col; 
+			
+			
+			int toX = fx[i];
+			int toY = fy[i];
+			
+			int opponent = 0;
+			for(int j = 0; j < 3; j++) {
+				tempCol += toX;
+				tempRow += toY;
+				
+				opponent += checkMatchOponent(tempRow, tempCol);
+			}
+			//if(opponent == 3) return true;
+			
+			System.out.println(i + " "+ opponent); 
+		}
+		
+		for(int i = 0; i < 8; i++) {
+			int tempRow = row;
+			int tempCol = col;
+			int toX = fx[i];
+			int toY = fy[i];
+			int opponent = 0;
+			
+			for(int j = 0; j < 2; j++) {
+				tempCol += toX;
+				tempRow += toY;
+				opponent += checkMatchOponent(tempRow, tempCol);
+			}
+			
+			
+			
+			int k = 8 - (i + 1);
+			
+			tempRow = fx[k];
+			tempCol = fy[k];
+			
+			opponent += checkMatchOponent(tempRow, tempCol);
+			
+			System.out.println(i +"  ... " + opponent);
+			
+			
+		}
+		
+		System.out.println("---------------------------");
+		
+		
+		
+		
+		
+		return false;
+	}
+
+
+	private int checkMatchOponent(int row, int col) {
+		if(row > 5 || row < 0 || col > 6 || col < 0) return 0;
+		if(gameBoard.getUserDice().equals(gameBoard.getDice(row, col))) return 1; 
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,30 @@
+package ConnectFourGamePackage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class MainClass {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+
+		GameBoardClass gbc = new GameBoardClass();
+		gbc.createNewGameBoard();
+		gbc.printGameBoard();
+		
+		MiniMaxClass mmc = new MiniMaxClass();
+		
+		
+		
+		System.out.println(mmc.getNextMove(gbc, 0));
+		
+		//EvalutionClass ec = new EvalutionClass();
+		//ec.getTheValueOfEvalutionFunction(gbc);
+		
+		//PlayGameClass pgc = new PlayGameClass();
+		
+		//pgc.startGame();
+		
+	}
+
+}
