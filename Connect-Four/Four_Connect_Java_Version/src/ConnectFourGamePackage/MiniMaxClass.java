@@ -19,32 +19,32 @@ public class MiniMaxClass {
 		
 		DEPTH_LIMIT = depth;
 	
-		for(int i=0;i<gameBoard.getNumberOfCol();i++) {
+		for(int i=0; i < gameBoard.getNumberOfCol(); i++) {
 			
 			int emptyIndex = gameBoard.getEmptyIndexOfAColumn(i);
 			
 			if(emptyIndex != -1) {
 				
 				GameBoardClass newGameBoard = gameBoard.getACopyOfGameBoardClass();
-				
 				newGameBoard.setDice(emptyIndex, i, newGameBoard.getPcDice());
 				
 				int value = createAndTraverseTree(newGameBoard,1);
-				TakeChanceOrDefence chanceOrDefence = new TakeChanceOrDefence(gameBoard);
 				
+				/*
+				TakeChanceOrDefence chanceOrDefence = new TakeChanceOrDefence(gameBoard);
 				if(chanceOrDefence.shouldTakeChanceOrDefence(i, gameBoard.getPcDice())) value += 100000;
 				if(chanceOrDefence.shouldTakeChanceOrDefence(i, gameBoard.getUserDice())) value += 2000;
 				
-				
 				pairList.add(new PairClass(i, value));
 				
-				System.out.println(i+"   ----------------    "+value);
+				System.out.println(i+"   ----------------    "+value);*/
 			}
 			
 		}
 		
 		
-		return getColumnNumber(pairList);
+		return 0;
+		//return getColumnNumber(pairList);
 	}
 
 	private int getColumnNumber(ArrayList<PairClass> pairList) {
@@ -94,7 +94,7 @@ public class MiniMaxClass {
 			
 			
 			System.out.println("//////////////////////////////////////////////");
-			//currentGameBoard.printFinalGameBoard();
+			currentGameBoard.printFinalGameBoard();
 
 			
 			EvalutionClass ec = new EvalutionClass();

@@ -18,14 +18,14 @@ public class EvalutionClass {
 		int firstElementRowPosition;
 		int value = 0;
 	
-		for(int i=0;i<gameBoard.getNumberOfCol(); i++) {		
+		for(int i=0; i<gameBoard.getNumberOfCol(); i++) {		
 			firstElementRowPosition = gameBoard.getIndexOfFirstElement(i);
 			//System.out.println(firstElementRowPosition);
 			
 			//System.out.println("check position "+i+"     "+firstElementRowPosition);
 			
 			if( firstElementRowPosition != -1 ) {
-				value += getTheEvalutingValueOfThePostion(firstElementRowPosition,i) ;
+				value += getTheEvalutingValueOfThePostion(firstElementRowPosition, i) ;
 				//System.out.println( i+" /////??//// "+getTheEvalutingValueOfThePostion(firstElementRowPosition,i) );
 			}
 		}
@@ -45,42 +45,16 @@ public class EvalutionClass {
 	
 
 	private int getTheEvalutingValueOfThePostion(int row, int column) {
-		/*
-		String evalutingDice = gameBoard.getDice(row, column);
-		int value = 0;
-		
-		for(int i=0;i<DIRECTION;i++) {
-			
-			count = 1;
-			currentXCoordinate = column;
-			currentYCoordinate = row;
-			
-			for(int j=0;j<3;j++) {
-				
-				currentXCoordinate += fx[i];
-				currentYCoordinate += fy[i];
-				
-				if( currentXCoordinate < 0 || currentYCoordinate <0 
-						|| currentXCoordinate> (gameBoard.getNumberOfCol()-1) || currentYCoordinate > (gameBoard.getNumberOfRow()-1)  ) break;
-				
-				else if(gameBoard.getDice(currentYCoordinate, currentXCoordinate).equals( "." )) continue;
-				
-				else if( evalutingDice.equals( gameBoard.getDice(currentYCoordinate, currentXCoordinate) ) ) count++;
-				
-				else if( ! evalutingDice.equals( gameBoard.getDice(currentYCoordinate, currentXCoordinate) ) ) break;
-
-			}
-			
-			value += getHuristicValue(count);
-		}
-		
-		if(evalutingDice.equals(gameBoard.getUserDice())) value *= -1;
-		
-		return value;*/
 		
 		
+		//System.out.println("row " +row +", col " + column);
 		String evalutingDice = gameBoard.getDice(row, column);
 		int value = 0,space,opponent;
+		
+		GameBoardClass newCopyOfGameBoard = gameBoard.getACopyOfGameBoardClass();
+		newCopyOfGameBoard.setDice(row, column, ".");
+		
+		
 		
 		for(int i=0;i<=3;i++) {
 			
