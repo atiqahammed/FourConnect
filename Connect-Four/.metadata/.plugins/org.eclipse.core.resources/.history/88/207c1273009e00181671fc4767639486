@@ -8,9 +8,9 @@ public class MainClass {
 	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 
-		///GameBoardClass gbc = new GameBoardClass();
-		//gbc.createNewGameBoard();
-		//gbc.printFinalGameBoard();
+		GameBoardClass gbc = new GameBoardClass();
+		gbc.createNewGameBoard();
+		gbc.printFinalGameBoard();
 		
 		
 		//TakeChanceOrDefence defence = new TakeChanceOrDefence(gbc);
@@ -26,18 +26,18 @@ public class MainClass {
 			
 		}*/
 		
-		//MiniMaxClass mmc = new MiniMaxClass();
+		MiniMaxClass mmc = new MiniMaxClass();
 		
 		
 		
-		//System.out.println(mmc.getNextMove(gbc, 1));
+		System.out.println(mmc.getNextMove(gbc, 1));
 		
 		//EvalutionClass ec = new EvalutionClass();
 		//ec.getTheValueOfEvalutionFunction(gbc);
 		
-		PlayGameClass pgc = new PlayGameClass();
+		//PlayGameClass pgc = new PlayGameClass();
 		
-		pgc.startGame();
+		//pgc.startGame();
 		
 	}
 

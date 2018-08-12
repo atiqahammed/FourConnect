@@ -57,7 +57,7 @@ public class EvalutionClass {
 			value += 50;
 		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence3(column, "0")) 
 			value += 20;
-		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence4(column, "X")) 
+		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence4(column, "0")) 
 			value += 8;
 		
 		

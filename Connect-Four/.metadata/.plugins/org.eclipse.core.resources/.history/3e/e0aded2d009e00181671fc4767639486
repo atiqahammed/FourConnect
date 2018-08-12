@@ -34,17 +34,17 @@ public class MiniMaxClass {
 				TakeChanceOrDefence chanceOrDefence = new TakeChanceOrDefence(gameBoard);
 				if(chanceOrDefence.shouldTakeChanceOrDefence(i, gameBoard.getPcDice())) value += 100000;
 				if(chanceOrDefence.shouldTakeChanceOrDefence(i, gameBoard.getUserDice())) value += 2000;
-				*/
+				
 				pairList.add(new PairClass(i, value));
 				
-				//System.out.println(i+"   ----------------    "+value);
+				System.out.println(i+"   ----------------    "+value);*/
 			}
 			
 		}
 		
 		
-		//return 0;
-		return getColumnNumber(pairList);
+		return 0;
+		//return getColumnNumber(pairList);
 	}
 
 	private int getColumnNumber(ArrayList<PairClass> pairList) {
@@ -99,9 +99,8 @@ public class MiniMaxClass {
 			
 			EvalutionClass ec = new EvalutionClass();
 			
-			int valueFromEvolutionFunction = ec.getTheValueOfEvalutionFunction(currentGameBoard);
-			System.out.println(valueFromEvolutionFunction);
-			return valueFromEvolutionFunction;
+			ec.getTheValueOfEvalutionFunction(currentGameBoard);
+			return 0;
 			
 		}
 		

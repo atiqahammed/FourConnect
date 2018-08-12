@@ -8,9 +8,9 @@ public class MainClass {
 	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 
-		///GameBoardClass gbc = new GameBoardClass();
-		//gbc.createNewGameBoard();
-		//gbc.printFinalGameBoard();
+		GameBoardClass gbc = new GameBoardClass();
+		gbc.createNewGameBoard();
+		gbc.printFinalGameBoard();
 		
 		
 		//TakeChanceOrDefence defence = new TakeChanceOrDefence(gbc);

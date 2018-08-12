@@ -29,11 +29,19 @@ public class EvalutionClass {
 				//System.out.println( i+" /////??//// "+getTheEvalutingValueOfThePostion(firstElementRowPosition,i) );
 			}
 		}
-		System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhh   "+value );
+		//System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhh   "+value );
 		return value;
 	}
 	
-	
+	private int getHuristicValue(int count) {
+		
+		if(count==2) return 5;
+		else if(count==3) return 100;
+		else if(count==4) return 10000;
+		
+		return 0;
+		
+	}
 	
 
 	private int getTheEvalutingValueOfThePostion(int row, int column) {
@@ -53,15 +61,11 @@ public class EvalutionClass {
 			value += 400;
 		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence2(column, "O")) 
 			value += 5;
+		
 		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence2(column, "X")) 
 			value += 50;
-		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence3(column, "0")) 
-			value += 20;
-		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence4(column, "X")) 
-			value += 8;
 		
 		
-		/*
 		for(int i=0;i<=3;i++) {
 			gameBoard.executeDirectionalCount(column, row, i);
 			value += getValue(gameBoard.getEvalutingDiceCount()+1, gameBoard.getEmptySpaceCount());
@@ -70,10 +74,8 @@ public class EvalutionClass {
 			
 			if (opponent==2 && space>=0) value += 3;
 			else if(opponent==3 && space >= 0) value+= 10;
-		}*/
+		}
 		
-		
-		//System.out.println(">> value "+ value);
 		return value;
 	}
 	
@@ -82,12 +84,12 @@ public class EvalutionClass {
 		
 		//if(opponent ==3 ) return 1000;
 		if(count==3 && space==0 ) return 0;
-		else if(count ==3 && space>=2 ) return 40;
-		else if(count ==3 && space==1 ) return 20;
+		else if(count ==3 && space>=2 ) return 80;
+		else if(count ==3 && space==1 ) return 50;
 		else if(count ==2 && space==0 ) return 0;
-		else if(count ==2 && space==2 ) return 10;
-		else if(count ==2 && space==1 ) return 0;
-		else if(count ==2 && space>=3 ) return 10;
+		else if(count ==2 && space==2 ) return 30;
+		else if(count ==2 && space==1 ) return 5;
+		else if(count ==2 && space>=3 ) return 35;
 		else if(count ==1 && space>=3 ) return 1;
 		else if(count ==4 ) return 10000;
 		return 0;

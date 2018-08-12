@@ -29,7 +29,7 @@ public class EvalutionClass {
 				//System.out.println( i+" /////??//// "+getTheEvalutingValueOfThePostion(firstElementRowPosition,i) );
 			}
 		}
-		System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhh   "+value );
+		//System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhh   "+value );
 		return value;
 	}
 	
@@ -55,11 +55,9 @@ public class EvalutionClass {
 			value += 5;
 		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence2(column, "X")) 
 			value += 50;
+		
 		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence3(column, "0")) 
 			value += 20;
-		if(new TakeChanceOrDefence(newCopyOfGameBoard).shouldTakeChanceOrDefence4(column, "X")) 
-			value += 8;
-		
 		
 		/*
 		for(int i=0;i<=3;i++) {
